@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary:   hsl(252, 78%, 55%);
+  --brand-light:     hsl(252, 100%, 97%);
+  --brand-gradient:  linear-gradient(135deg, hsl(252,78%,55%) 0%, hsl(272,74%,50%) 100%);
+  --input-border:    hsl(252, 30%, 88%);
+  --input-focus:     hsl(252, 78%, 55%);
+  --text-primary:    hsl(240, 20%, 16%);
+  --text-secondary:  hsl(240, 10%, 52%);
+  --bg-page:         hsl(252, 60%, 98%);
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border text-sm font-medium
+           bg-white text-gray-800 placeholder-gray-400
+           transition-all duration-200 outline-none;
+    border-color: var(--input-border);
+    box-shadow: 0 2px 8px 0 rgba(108,72,234,0.05);
+  }
+  .input-field:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px hsla(252,78%,55%,0.14), 0 2px 8px 0 rgba(108,72,234,0.05);
+  }
+
+  .btn-primary {
+    @apply w-full py-3.5 rounded-2xl text-white font-bold text-base
+           tracking-wide transition-all duration-200 active:scale-95;
+    background: var(--brand-gradient);
+    box-shadow: 0 4px 20px 0 rgba(108,72,234,0.40);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 6px 28px 0 rgba(108,72,234,0.52);
+    filter: brightness(1.06);
+  }
+
+  .role-card {
+    @apply flex flex-col items-center gap-1.5 px-3 py-3 rounded-2xl
+           border-2 cursor-pointer transition-all duration-200 select-none;
+    border-color: var(--input-border);
+    background: white;
+    min-width: 68px;
+  }
+  .role-card.active {
+    border-color: var(--brand-primary);
+    background: hsl(252,100%,97%);
+    box-shadow: 0 2px 12px 0 rgba(108,72,234,0.18);
+  }
+  .role-card:hover:not(.active) {
+    border-color: hsl(252,60%,74%);
+    background: hsl(252,100%,98.5%);
+  }
+}
